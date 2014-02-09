@@ -9,13 +9,13 @@ import org.apache.pdfbox.util.PDFTextStripper;
 
 /**
  * The class PDFTextParser -- it extracts text from PDF documents
+ * 
+ * class PDFTextParser adapted from http://thottingal.in/blog/2009/06/24/pdfbox-extract-text-from-pdf/ 
  *
  * @author Kyle Jorgensen and Alex Mousavi
- * @version Choice Points Project1 for CS56, Spring 2011
+ * @version CS56, Spring 2011
  * @see PDFTextParserTest
  */
-
-//class PDFTextParser adapted from http://thottingal.in/blog/2009/06/24/pdfbox-extract-text-from-pdf/
  
 public class PDFTextParser 
 {

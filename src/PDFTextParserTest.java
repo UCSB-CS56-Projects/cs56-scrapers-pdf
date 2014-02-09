@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
  * The test class PDFTextParserTest -- it tests the PDFTextParser class using JUnit
  *
  * @author Alex Mousavi and Kyle Jorgensen
- * @version Choice Points Project1 for CS56, Spring 2011
+ * @version CS56, Spring 2011
  * @see PDFTextParser
  */
 
