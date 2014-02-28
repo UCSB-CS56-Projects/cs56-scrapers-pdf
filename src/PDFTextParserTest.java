@@ -1,6 +1,6 @@
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
-
+import java.util.*;
 /**
  * The test class PDFTextParserTest -- it tests the PDFTextParser class using JUnit
  *
@@ -44,6 +44,22 @@ public class PDFTextParserTest
 
 	assertEquals(expected,myTester.pdftoText("pdfs/symbols.pdf"));
     }
+
+    @Test public void testTextOfPage(){ //test the textofpage method
+	PDFTextParser myTester = new PDFTextParser();
+	String expected = "Honey Badgers are dangerous animals.\n";
+
+	assertEquals(expected,myTester.textOfPage("pdfs/Honeybadgers.pdf", 1));
+
+    }
+    @Test public void testKeywordFound()
+	{
+	    PDFKeywordSearch myTester = new PDFKeywordSearch();
+	    ArrayList<Integer> expected = new ArrayList<Integer>();
+	    expected.add(1);
+	    expected.add(3);
+	    assertEquals(expected,myTester.keywordFoundInPage("Hello", "pdfs/testPDF.pdf"));
+	}
 
 
 
