@@ -61,6 +61,13 @@ public class PDFTextParserTest
 	    assertEquals(expected,myTester.keywordFoundInPage("Hello", "pdfs/testPDF.pdf"));
 	}
 
+    //        @Test public void testMulti(){
+    //	
+    //	keywordsAcrossMultiplePDF myTester = new keywordsAcrossMultiplePDF();
+    //	String expected = "";
+    //	String[] test = {"pdfs/hello.txt", "pdfs"};
+    //	assertEquals(expected, myTester.main(test));
 
+    //}
 
 }
