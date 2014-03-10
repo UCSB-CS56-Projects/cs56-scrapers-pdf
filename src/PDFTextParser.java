@@ -86,7 +86,65 @@ public class PDFTextParser
 
 	return parsedText;
     }
+    
 
+    public static String textOfPage(String fileName, int pageNumber) 
+    {
+	PDFParser parser;  // this object handles the parsing of the PDF document
+	String parsedText = null;  // this is the string that will contain the text from the pdf doc
+
+	// these 3 are all objects within PDF box that allow us to manipulate the pdf document
+	PDFTextStripper pdfStripper = null;
+	PDDocument pdDoc = null;
+	COSDocument cosDoc = null;
+
+	File file = new File(fileName);
+
+	if (!file.isFile()) 
+	    {
+		System.err.println("File " + fileName + " does not exist.");
+		return null;
+	    }
+	// try to create a new PDFParser
+	try  {
+	    parser = new PDFParser(new FileInputStream(file));
+	} 
+	catch (IOException e) {
+	    System.err.println("Unable to open PDF Parser. " + e.getMessage());
+	    return null;
+	}
+	// try to parse the PDF document
+	try {
+	    parser.parse();
+	    cosDoc = parser.getDocument();
+
+	    pdfStripper = new PDFTextStripper();
+	    pdDoc = new PDDocument(cosDoc);
+
+	    pdfStripper.setStartPage(pageNumber);
+	    pdfStripper.setEndPage(pageNumber);
+	    parsedText = pdfStripper.getText(pdDoc);
+	} 
+	catch (Exception e) {
+	        System.err
+		    .println("An exception occured in parsing the PDF Document."
+			     + e.getMessage());
+	} 
+	// If the document opened, close the two objects that used it
+	finally {
+	    try {
+		if (cosDoc != null)
+		    cosDoc.close();
+		if (pdDoc != null)
+		    pdDoc.close();
+	    } 
+	    catch (Exception e) {
+		e.printStackTrace();
+	    }
+	}
+
+	return parsedText;
+    }
     
 }
 
