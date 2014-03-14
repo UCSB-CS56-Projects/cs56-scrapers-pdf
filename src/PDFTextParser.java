@@ -1,4 +1,3 @@
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -86,8 +85,12 @@ public class PDFTextParser
 
 	return parsedText;
     }
-    
 
+
+    /** This method the text on a certain page of a PDF file.
+       * @param fileName - The name (path) of a PDF file
+       * @param pageNumber - The page number that you want to extract text from
+     */
     public static String textOfPage(String fileName, int pageNumber) 
     {
 	PDFParser parser;  // this object handles the parsing of the PDF document
