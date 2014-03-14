@@ -17,6 +17,7 @@
   </path>  
 
   <mkdir dir="build" />
+
   <target name="compile" description="compiles the code">
     <javac srcdir="src" destdir="build" includeantruntime="false" debuglevel="lines,source">
       <classpath refid="classpath" /> 
@@ -28,6 +29,13 @@
     <delete dir="build" quiet="true" />
   </target>
  
+  <target name="run">
+    <java dir="build"  classname="keywordsAcrossMultiplePDF" fork="true">
+      <arg value="pdfs/hello.txt"/>
+      <arg value="pdfs"/>
+      </java>
+      
+  </target>
 
 <!-- ************* JUNIT TEST ************** -->
 
