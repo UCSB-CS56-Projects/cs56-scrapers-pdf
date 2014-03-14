@@ -29,12 +29,24 @@
     <delete dir="build" quiet="true" />
   </target>
  
-  <target name="run">
-    <java dir="build"  classname="keywordsAcrossMultiplePDF" fork="true">
-      <arg value="pdfs/hello.txt"/>
-      <arg value="pdfs"/>
-      </java>
+  <target name="runKeywordsAcrossMultiPDF">
+    <property name = "filePath" value = "pdfs/hello.txt"/>
+    <property name = "dirName" value = "pdfs"/>
+    <java dir="build" classpathref="classpath"  classname="keywordsAcrossMultiplePDF" fork="true">
+     
+      <arg value="${filePath}"/>
+      <arg value="${dirName}"/>
+    </java>
       
+  </target>
+
+  <target name="runKeywordSearch">
+    <property name = "word" value = "Hello"/>
+    <property name = "filePath" value = "pdfs/testPDF.pdf"/>
+    <java dir="build" classpathref="classpath" classname="PDFKeywordSearch" fork = "true">
+      <arg value = "${word}"/>
+      <arg value = "${filePath}"/>
+    </java>
   </target>
 
 <!-- ************* JUNIT TEST ************** -->

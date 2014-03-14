@@ -12,6 +12,20 @@ public class PDFKeywordSearch{
     public PDFKeywordSearch(){
     }
 
+    public static void main (String[] args){
+	
+	ArrayList<Integer> result = new ArrayList<Integer>();
+	PDFKeywordSearch keywordSearch = new PDFKeywordSearch();
+	String word = args[0];
+	String filePath = "../" + args[1];
+	result = keywordSearch.keywordFoundInPage(word, filePath);
+	for (Integer i: result){
+	    System.out.println(i);
+	}
+	return;
+
+    }
+
 
     public ArrayList<Integer> keywordFoundInPage(String keyword, String fileName){
 	//PDFParser parser0; //
@@ -53,6 +67,11 @@ public class PDFKeywordSearch{
 
 	    
 	}
+
+	//for (int i: pageFoundList){
+	//    System.out.println(i);
+	//}
+	//Lines above are used to test the result
 	return pageFoundList;
 
 

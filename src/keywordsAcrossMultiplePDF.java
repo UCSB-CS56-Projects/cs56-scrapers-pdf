@@ -4,10 +4,6 @@ import org.apache.pdfbox.cos.COSDocument;
 import org.apache.pdfbox.pdfparser.PDFParser;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.util.PDFTextStripper;
-import org.apache.pdfbox.cos.COSDocument;
-import org.apache.pdfbox.pdfparser.PDFParser;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.util.PDFTextStripper;
 
 
 public class keywordsAcrossMultiplePDF{
@@ -24,11 +20,12 @@ public class keywordsAcrossMultiplePDF{
         
 
 
-	
+	keywordFileName = "../" + keywordFileName;
 	//code below read keywords from file
 	File file = new File(keywordFileName);
 	if (!file.isFile()){
-	    System.err.println("File " + keywordFileName + "does not found");
+	    System.err.println("File " + keywordFileName + " does not found");
+	    
 	    return;
 	}
 	try{
@@ -36,20 +33,25 @@ public class keywordsAcrossMultiplePDF{
 	    Scanner scanner = new Scanner(fis);
 	    while(scanner.hasNextLine()){
 		String buffer = scanner.nextLine();
-		System.out.println(buffer);
+		//System.out.println(buffer);
 		keywordList.add(buffer);
 		
 	    }
+	    //for (String a :keywordList){
+	    //System.out.println(a);
+	    //}
+	    //Lines above are used for testing
 	}
-	catch(IOException e){
-	    System.err.println("unable to open" + e.getMessage());
+	catch(IOException ex){
+	    System.err.println("unable to open" + ex.getMessage());
 	   
 	    return;
+	    
 	    
 	}
 	//get file names
 	
-	String path = "./" + pdfDirName; 
+	String path = "../" + pdfDirName; 
  
 	String files;
 	File folder = new File(path);
@@ -60,26 +62,31 @@ public class keywordsAcrossMultiplePDF{
 		if (listOfFiles[i].isFile()) {
 			files = listOfFiles[i].getName();
 			if (files.endsWith(".pdf") || files.endsWith(".PDF")){
-			    System.out.println(files);
+	    
 			    fileNameList.add(files);
+	
 			}
+		       
 			
 		}
 	
 
 
 	}
-       
+
+	//for (String a : fileNameList){
+	//  System.out.println(a);
+	//}
+	//Lines above are for testing
 
 	//main manipulation
 	for (String fileName: fileNameList){
 	    PDFTextParser parser = new PDFTextParser();
-	    String content = parser.pdftoText(pdfDirName + "/" + fileName);
+	    String content = parser.pdftoText("../" + pdfDirName + "/" + fileName);
 	    for (String keyword: keywordList){
 		boolean found = false;
 		found = content.contains(keyword);
-		if (found){
-		    
+		if (found){	 
 		    System.out.println(fileName + "," + keyword);
 		}
 		
@@ -97,8 +104,3 @@ public class keywordsAcrossMultiplePDF{
 
 
 }
-
-
-
-
-
