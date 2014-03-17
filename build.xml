@@ -17,6 +17,7 @@
   </path>  
 
   <mkdir dir="build" />
+
   <target name="compile" description="compiles the code">
     <javac srcdir="src" destdir="build" includeantruntime="false" debuglevel="lines,source">
       <classpath refid="classpath" /> 
@@ -28,6 +29,25 @@
     <delete dir="build" quiet="true" />
   </target>
  
+  <target name="runKeywordsAcrossMultiPDF">
+    <property name = "filePath" value = "pdfs/hello.txt"/>
+    <property name = "dirName" value = "pdfs"/>
+    <java dir="build" classpathref="classpath"  classname="keywordsAcrossMultiplePDF" fork="true">
+     
+      <arg value="${filePath}"/>
+      <arg value="${dirName}"/>
+    </java>
+      
+  </target>
+
+  <target name="runKeywordSearch">
+    <property name = "word" value = "Hello"/>
+    <property name = "filePath" value = "pdfs/testPDF.pdf"/>
+    <java dir="build" classpathref="classpath" classname="PDFKeywordSearch" fork = "true">
+      <arg value = "${word}"/>
+      <arg value = "${filePath}"/>
+    </java>
+  </target>
 
 <!-- ************* JUNIT TEST ************** -->
 
