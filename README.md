@@ -6,6 +6,12 @@ http://pdfbox.apache.org/
 
 ------------------------------
 
+project history
+===============
+```
+ W14 | jstaahl 4pm | bernardyan | (kjorg50) Utilities for scraping PDF files. Uses PDFBox as a tool.
+```
+
 What it does
 ============
 
